@@ -44,7 +44,7 @@ export default class CustomDatePickerIOS extends PureComponent {
   state = {
     date: this.props.date,
     userIsInteractingWithPicker: false,
-    minuteInterval: 1
+    minuteInterval: 1,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +80,7 @@ export default class CustomDatePickerIOS extends PureComponent {
 
   _handleUserTouchInit = () => {
     this.setState({
-      userIsInteractingWithPicker: true,
+      userIsInteractingWithPicker: false,
     });
     return false;
   };
@@ -138,10 +138,10 @@ export default class CustomDatePickerIOS extends PureComponent {
         isVisible={isVisible}
         style={[styles.contentContainer, contentContainerStyleIOS]}
         onModalHide={this._handleOnModalHide}
-        onModalShow={()=>{
+        onModalShow={() => {
           this.setState({
-            minuteInterval
-          })
+            minuteInterval,
+          });
         }}
         backdropOpacity={0.4}
         {...reactNativeModalPropsIOS}
